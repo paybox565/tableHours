@@ -1,0 +1,29 @@
+{
+  "name": "tablehours",
+  "version": "0.0.1",
+  "description": "Working hours table",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paybox565/tableHours.git"
+  },
+  "author": "Vygovskii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paybox565/tableHours/issues"
+  },
+  "homepage": "https://github.com/paybox565/tableHours#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.5"
+  },
+  "dependencies": {}
+}

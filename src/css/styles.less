@@ -2,59 +2,39 @@
     box-sizing: border-box;
 }
 .container {
-    max-width: 1280px;
+    max-width: @max-width;
     margin: 0 auto;
     position: relative;
 }
-.table {
-
-    &__row {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        transition: all 0.3s ease;
-
-        &--header {
-            font-weight: bold;
-        }
-    }
-    &__cell {
-        display: flex;
-        flex: 1 1;
-        background-color: #E0E4EF;
-        height: 30px;
-        align-items: center;
-        justify-content: center;
-        border-right: 1px solid white;
-        border-bottom: 1px solid white;
-        cursor: pointer;
-        opacity: 1;
-        transition: all 0.3s ease;
-
-        &:last-of-type {
-            border-right: none;
-        }
-
-        &--days {
-            background-color: white;
-            cursor: default;
-        }
-
-        &.active {
-            background-color: #0165FF;
-        }
-        &.hide {
-            opacity: 0;
-        }
-    }
+body, html {
+    background-color: @background-color;
 }
-
-input[type=time] {
-    color: black;
+html {
+    height: 100%;
+    min-width: 320px;
+}
+body {
+    height: 100%;
     font-size: 14px;
-    width: 120px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+.page-container {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 50px;
+}
+footer {
+    margin: -50px auto 0;
+    max-width: @max-width;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
 }
 

@@ -16,7 +16,7 @@ function scripts(cb) {
 }
 
 function styles(cb) {
-    return src('src/**/*.less')
+    return src('src/css/main.less')
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(concat('styles.css'))

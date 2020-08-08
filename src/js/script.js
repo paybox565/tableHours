@@ -1,21 +1,23 @@
 class WorkHoursTable {
 
-    constructor(wrap, start, end) {
-        this.beginTime = start ? start : '07:00'
-        this.endTime = end ? end : '17:00'
+    constructor(id, wrapId, start, end) {
+        this.beginTime = start ? start : '08:00'
+        this.endTime = end ? end : '23:00'
         this.timeOut = 350;
+        this.tableId = id;
+        this.wrapId = document.getElementById(wrapId);
         //Save context for method
         this.changeInterval = this.changeInterval.bind(this);
     }
 
     createTable(){
-        const wrap = document.createElement('div');
-        wrap.id = 'work_hours_table';
-        wrap.classList.add('table__wrap');
-        document.body.append(wrap);
         //Create time fields
-        this.createInput(document.body, this.beginTime, 'start_interval');
-        this.createInput(document.body, this.endTime, 'end_interval');
+        this.createInput(this.wrapId, this.beginTime, this.tableId + 'start_interval');
+        this.createInput(this.wrapId, this.endTime, this.tableId + 'end_interval');
+        const wrap = document.createElement('div');
+        wrap.id = this.tableId;
+        wrap.classList.add('table__wrap');
+        this.wrapId.append(wrap);
         this.redrawTable(wrap, this.beginTime, this.endTime)
     }
 
@@ -72,7 +74,7 @@ class WorkHoursTable {
     }
 
     recalculateRows(start, end){
-        const table = document.getElementById('work_hours_table');
+        const table = document.getElementById(this.tableId);
         const rows = table.querySelectorAll('.table__row');
         const count = this.calculateInterval(start, end);
 
@@ -99,7 +101,7 @@ class WorkHoursTable {
     }
 
     clearTable(){
-        const table = document.getElementById('work_hours_table');
+        const table = document.getElementById(this.tableId);
         const rows = table.querySelectorAll('.table__row');
         for(let i = 0; i < rows.length;i++){
             const cells = rows[i].querySelectorAll('.table__cell');
@@ -125,10 +127,10 @@ class WorkHoursTable {
     }
 
     changeInterval(e){
-        if(e.target.id === 'start_interval'){
+        if(e.target.id === this.tableId + 'start_interval'){
             this.beginTime = e.target.value
         }
-        if(e.target.id === 'end_interval'){
+        if(e.target.id === this.tableId + 'end_interval'){
             this.endTime = e.target.value
         }
         this.recalculateRows(this.beginTime, this.endTime)
@@ -136,6 +138,8 @@ class WorkHoursTable {
 
 }
 
-const table = new WorkHoursTable();
+const table = new WorkHoursTable('work_hours_table', 'main_wrap');
 table.createTable();
+//const table2 = new WorkHoursTable('work_hours_table2', 'main_wrap');
+//table2.createTable();
 

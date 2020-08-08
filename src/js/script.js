@@ -1,6 +1,12 @@
 class WorkHoursTable {
 
     constructor(id, wrapId, start, end) {
+        if(!id){
+            throw Error('No table ID');
+        }
+        if(!wrapId){
+            throw Error('No table wrap ID');
+        }
         this.beginTime = start ? start : '08:00'
         this.endTime = end ? end : '23:00'
         this.timeOut = 350;
@@ -11,13 +17,31 @@ class WorkHoursTable {
     }
 
     createTable(){
+        //Create time title
+        const timeTitle = document.createElement('span');
+        timeTitle.classList.add('table__time-title');
+        timeTitle.innerText = 'Задать интервал таблицы';
+        //Create time separator
+        const separator = document.createElement('span');
+        separator.classList.add('table__time-separator');
         //Create time fields
-        this.createInput(this.wrapId, this.beginTime, this.tableId + 'start_interval');
-        this.createInput(this.wrapId, this.endTime, this.tableId + 'end_interval');
+        const inputStart = this.createInput(this.beginTime, this.tableId + 'start_interval');
+        const inputEnd = this.createInput(this.endTime, this.tableId + 'end_interval');
+        //Create wrapper
         const wrap = document.createElement('div');
         wrap.id = this.tableId;
         wrap.classList.add('table__wrap');
+        //Create time-title wrap
+        const timeTitleWrap = document.createElement('div');
+        timeTitleWrap.classList.add('table__time-title-wrap');
+        //Append blocks
+        timeTitleWrap.append(timeTitle);
+        timeTitleWrap.append(inputStart);
+        timeTitleWrap.append(separator);
+        timeTitleWrap.append(inputEnd);
+        this.wrapId.append(timeTitleWrap);
         this.wrapId.append(wrap);
+        //Render table
         this.redrawTable(wrap, this.beginTime, this.endTime)
     }
 
@@ -45,7 +69,7 @@ class WorkHoursTable {
         wrap.append(row);
     }
 
-    createInput(wrap, value, id){
+    createInput(value, id){
         const input = document.createElement('input');
         input.id = id;
         input.type = 'time';
@@ -53,14 +77,24 @@ class WorkHoursTable {
         input.max = '23:30';
         input.value = value;
         input.addEventListener("change", this.changeInterval, false);
-        wrap.append(input);
+
+        return input;
     }
 
     calculateInterval(from, to){
         const starts = from.split(':');
         const ends = to.split(':');
+        let startHour = Number(starts[0]);
+        let startMinute = Number(starts[1]);
+        let endHour = Number(ends[0]);
+        let endMinute = Number(ends[1]);
 
-        return Number(ends[0]) - Number(starts[0])
+        //Night shifts
+        if(endHour < startHour){
+            endHour += 24;
+        }
+
+        return endHour - startHour
     }
 
     redrawTable(wrap, start, end){
@@ -138,8 +172,8 @@ class WorkHoursTable {
 
 }
 
-const table = new WorkHoursTable('work_hours_table', 'main_wrap');
-table.createTable();
+// const table = new WorkHoursTable('work_hours_table', 'main_wrap');
+// table.createTable();
 //const table2 = new WorkHoursTable('work_hours_table2', 'main_wrap');
 //table2.createTable();
 

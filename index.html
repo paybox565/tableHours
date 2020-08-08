@@ -2,6 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link rel="stylesheet" href="dist/styles.css">
     <title></title>
 </head>
@@ -15,13 +16,13 @@
                 <div class="progress-step is-complete">
                     Тип предприятия
                 </div>
-                <div class="progress-step is-complete">
+                <div class="progress-step is-complete is-last-complete">
                     Категории
                 </div>
-                <div class="progress-step is-complete is-last-complete">
+                <div class="progress-step is-active">
                     График работы
                 </div>
-                <div class="progress-step is-active">
+                <div class="progress-step">
                     Оборот и нагрузка
                 </div>
                 <div class="progress-step">
@@ -38,6 +39,20 @@
             <div class="table__title">
                 График работы предприятия
             </div>
+
+            <div id="work_hours_table" class="table__wrap">
+                <div class="table__row table__row--hours">
+                    <div class="table__cell table__cell--days"></div>
+                    <div class="table__cell">10 <span class="minutes">00</span> </div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell">12<span class="minutes">00</span></div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell">14<span class="minutes">00</span></div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell">16<span class="minutes">00</span></div>
+                </div><div class="table__row">
+                <div class="table__cell table__cell--days">Вт</div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div></div><div class="table__row"><div class="table__cell table__cell--days">Ср</div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div></div><div class="table__row"><div class="table__cell table__cell--days">Чт</div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div></div><div class="table__row"><div class="table__cell table__cell--days">Пт</div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div></div><div class="table__row"><div class="table__cell table__cell--days">Сб</div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div></div><div class="table__row"><div class="table__cell table__cell--days">Вс</div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div><div class="table__cell active"></div></div></div>
+
             <div id="main_wrap"></div>
         </div>
     </div>
